@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutSemanticReview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="32dp"
+    android:background="#FAFAFA">
+
+    <TextView
+        android:id="@+id/textSemanticTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="情景语义关联复习"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/buttonThemeClassification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="任务1：主题分类"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/buttonSemanticDrag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="任务2：语义拖拽" />
+
+    <Button
+        android:id="@+id/buttonImportThemes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="导入主题词类"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

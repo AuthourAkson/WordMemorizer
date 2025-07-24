@@ -1,0 +1,80 @@
+[
+  {
+    "word": "abundant",
+    "definition": "丰富的，大量的",
+    "similarWords": ["abandon", "bound", "redundant", "operand"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "abandon",
+    "definition": "放弃，遗弃",
+    "similarWords": ["abundant", "bandon", "add-on"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "bound",
+    "definition": "跳跃；边界；受約束的",
+    "similarWords": ["pound", "found", "around", "abundant"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "redundant",
+    "definition": "多余的，冗余的",
+    "similarWords": ["abundant", "undone", "respond"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "operand",
+    "definition": "操作數",
+    "similarWords": ["operate", "open", "bond"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "affect",
+    "definition": "影响；假装",
+    "similarWords": ["effect", "afflict", "infect"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "effect",
+    "definition": "效果，影響；生效",
+    "similarWords": ["affect", "effort", "eject"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "adapt",
+    "definition": "適應；改編",
+    "similarWords": ["adopt", "adept", "apt"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "adopt",
+    "definition": "採用；收養",
+    "similarWords": ["adapt", "opt", "atop"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "desert",
+    "definition": "沙漠；拋棄，遺棄",
+    "similarWords": ["dessert", "assert", "exert"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "dessert",
+    "definition": "甜點",
+    "similarWords": ["desert", "assert", "design"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "principal",
+    "definition": "主要的；校長",
+    "similarWords": ["principle", "participial", "pal"],
+    "nextReviewDate": 0
+  },
+  {
+    "word": "principle",
+    "definition": "原則，原理",
+    "similarWords": ["principal", "practice", "print"],
+    "nextReviewDate": 0
+  }
+]

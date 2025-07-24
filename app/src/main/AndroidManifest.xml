@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/Theme.WordMemorizer"
+        android:icon="@mipmap/auak_memo">
+
+        <activity android:name=".ui.AddWordActivity" />
+        <activity android:name=".ui.ReviewActivity" />
+        <activity android:name=".ui.ReviewModeSelectionActivity" />
+        <activity android:name=".ui.SemanticDragActivity" />
+        <activity android:name=".ui.SemanticReviewActivity" />
+        <activity android:name=".ui.ThemeClassificationActivity" />
+        <activity android:name=".ui.DefinitionQuizActivity" />
+        <activity android:name=".ui.SentenceCompletionActivity" />
+        <activity android:name=".ui.ConsolidationModeSelectionActivity" />
+        <activity android:name=".ui.SynonymReplacementActivity"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.SynonymReplacementActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="同义替换练习"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请使用目标词的同义词替换原始句子中的加粗部分，并改写句子。"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="24dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/textViewOriginalSentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:background="@drawable/rounded_border_background"
+            android:layout_marginBottom="16dp"
+            tools:text="原始句子: The **large** dog barked loudly." /> <TextView
+            android:id="@+id/textViewTargetWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_500"
+            android:layout_marginBottom="16dp"
+            tools:text="目标词: huge" /> <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="你的改写："
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editTextStudentSentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入替换后的句子..."
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="5"
+            android:gravity="top|start"
+            android:padding="12dp"
+            android:background="@drawable/rounded_border_background"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提交"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/buttonHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提示" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textColor="@android:color/black"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal"
+            tools:text="反馈：答案正确！" /> <TextView
+            android:id="@+id/textViewCorrectAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/design_default_color_primary"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp"
+            tools:text="正确答案示例：The forest has abundant animals."/>
+
+        <Button
+            android:id="@+id/buttonNextWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下一个单词"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</ScrollView>

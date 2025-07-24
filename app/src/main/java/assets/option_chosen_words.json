@@ -1,0 +1,97 @@
+[
+  {
+    "word": "ubiquitous",
+    "definition": "普遍存在的；無處不在的",
+    "example": [
+      "Smartphones are becoming ubiquitous.",
+      "The ubiquitous presence of fast-food chains."
+    ],
+    "relatedWords": ["ubiquity"],
+    "synonyms": ["omnipresent", "pervasive", "widespread"],
+    "antonyms": ["rare", "scarce", "limited"],
+    "rootWord": "ubi",
+    "similarWords": ["oblique", "uniquitous", "equitable"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.5,
+    "interval": 12,
+    "repetitions": 3,
+    "nextReviewDate": 1722652800000,
+    "pronunciation": "/juːˈbɪkwɪtəs/"
+  },
+  {
+    "word": "capricious",
+    "definition": "反復無常的；任性的",
+    "example": [
+      "A capricious climate.",
+      "Her capricious moods left her friends confused."
+    ],
+    "relatedWords": ["caprice"],
+    "synonyms": ["fickle", "unpredictable", "whimsical"],
+    "antonyms": ["stable", "consistent", "steadfast"],
+    "rootWord": "capr",
+    "similarWords": ["cappuccino", "malicious", "auspicious"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.3,
+    "interval": 15,
+    "repetitions": 4,
+    "nextReviewDate": 1722912000000,
+    "pronunciation": "/kəˈprɪʃəs/"
+  },
+  {
+    "word": "benevolent",
+    "definition": "仁慈的；慈善的",
+    "example": [
+      "A benevolent smile.",
+      "A benevolent organization helps the poor."
+    ],
+    "relatedWords": ["benevolence"],
+    "synonyms": ["kind", "generous", "altruistic"],
+    "antonyms": ["malevolent", "malicious", "unkind"],
+    "rootWord": "bene",
+    "similarWords": ["malevolent", "beneath", "benign"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.7,
+    "interval": 18,
+    "repetitions": 5,
+    "nextReviewDate": 1723171200000,
+    "pronunciation": "/bəˈnɛvələnt/"
+  },
+  {
+    "word": "ephemeral",
+    "definition": "短暫的；朝生暮死的",
+    "example": [
+      "Fashion is often ephemeral.",
+      "An ephemeral moment of happiness."
+    ],
+    "relatedWords": ["ephemerality"],
+    "synonyms": ["transient", "fleeting", "short-lived"],
+    "antonyms": ["eternal", "permanent", "lasting"],
+    "rootWord": "ephem",
+    "similarWords": ["ephaptic", "epigram", "epilogue"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.4,
+    "interval": 10,
+    "repetitions": 2,
+    "nextReviewDate": 1722480000000,
+    "pronunciation": "/ɪˈfɛmərəl/"
+  },
+  {
+    "word": "gregarious",
+    "definition": "群居的；好交際的",
+    "example": [
+      "Humans are gregarious creatures.",
+      "She's a gregarious person who loves parties."
+    ],
+    "relatedWords": ["gregariousness"],
+    "synonyms": ["sociable", "outgoing", "convivial"],
+    "antonyms": ["solitary", "introverted", "aloof"],
+    "rootWord": "greg",
+    "similarWords": ["gregariousness", "egregious", "gorgeous"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.6,
+    "interval": 20,
+    "repetitions": 6,
+    "nextReviewDate": 1723344000000,
+    "pronunciation": "/ɡrɪˈɡɛəriəs/"
+  }
+]

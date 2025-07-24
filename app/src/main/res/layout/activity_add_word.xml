@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/inputWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入单词" />
+
+    <Button
+        android:id="@+id/buttonGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成翻译和例句" />
+
+    <!-- 滚动区域显示释义与例句 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textDefinition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="释义将显示在这里"
+                android:textSize="16sp"
+                android:paddingBottom="8dp"
+                android:maxLines="100"
+                android:ellipsize="none"/>
+
+            <TextView
+                android:id="@+id/textExample"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="例句将显示在这里"
+                android:textSize="16sp"
+                android:maxLines="100"
+                android:ellipsize="none"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存单词"
+        android:paddingTop="16dp"/>
+</LinearLayout>

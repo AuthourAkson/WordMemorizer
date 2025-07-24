@@ -1,0 +1,14 @@
+[
+  {
+    "theme": "校园",
+    "relatedWords": ["blackboard", "teacher", "student", "classroom"]
+  },
+  {
+    "theme": "家庭",
+    "relatedWords": ["mother", "father", "kitchen", "sofa"]
+  },
+  {
+    "theme": "自然",
+    "relatedWords": ["tree", "river", "mountain", "cloud"]
+  }
+]

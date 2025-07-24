@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/instructionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请将单词拖入对应主题"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/buttonNextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下一组主题"
+                android:layout_marginStart="16dp"
+                android:visibility="gone" /> </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wordPool"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/themeBox1"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:background="#D1E8FF"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/themeLabel1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="主题1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/themeBox2"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:background="#FFEFD1"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:id="@+id/themeLabel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="主题2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/themeBox3"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:background="#D1FFD1"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/themeLabel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="主题3"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

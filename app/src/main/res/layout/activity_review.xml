@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/wordText"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/ipaText"
+            android:textSize="18sp"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" />
+
+
+        <LinearLayout
+            android:id="@+id/cardLayout"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#EFEFEF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/hintText"
+                android:text="点击查看释义和例句"
+                android:textSize="16sp"
+                android:textColor="#888888"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/definitionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:paddingTop="8dp" />
+
+            <TextView
+                android:id="@+id/exampleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:paddingTop="8dp" />
+        </LinearLayout>
+
+        <!-- 显示语义图谱的开头 -->
+        <!-- 1. 点击提示展开 -->
+        <TextView
+            android:id="@+id/semanticHintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击展开语义图谱"
+            android:textColor="@android:color/holo_blue_dark"
+            android:paddingTop="16dp" />
+        <!-- 2. 图谱连接区域（按钮式） -->
+        <LinearLayout
+            android:id="@+id/semanticMapContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:visibility="visible" />
+        <!-- 3. 文本形式显示结构（近义词、反义词等） -->
+        <LinearLayout
+            android:id="@+id/semanticLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/synonymsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="近义词：" />
+
+            <TextView
+                android:id="@+id/rootText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="词根 / 词性：" />
+
+            <TextView
+                android:id="@+id/antonymsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="反义词：" />
+
+            <!-- 显示被点击单词的释义 -->
+            <TextView
+                android:id="@+id/selectedWordDefinition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/buttonAddToReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加入今日复习"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+        <!-- 4. 点击图谱词后的释义区 -->
+        <LinearLayout
+            android:id="@+id/semanticResultContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:visibility="visible" />
+
+        <!-- 评分区 -->
+        <RadioGroup
+            android:id="@+id/ratingGroup"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/score1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_1" />
+
+            <RadioButton
+                android:id="@+id/score2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_2" />
+
+            <RadioButton
+                android:id="@+id/score3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_3" />
+
+            <RadioButton
+                android:id="@+id/score4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_4" />
+
+            <RadioButton
+                android:id="@+id/score5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_5" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonPlayPronunciation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔊 播放发音"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/buttonNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next_word" />
+
+    </LinearLayout>
+</ScrollView>

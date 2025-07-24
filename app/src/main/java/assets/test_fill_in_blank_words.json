@@ -1,0 +1,110 @@
+[
+  {
+    "word": "abundant",
+    "definition": "豐富的；大量的；充足的",
+    "example": [
+      "An abundant supply of food. (充足的食物供應。)",
+      "The country has abundant natural resources. (該國擁有豐富的自然資源。)"
+    ],
+    "fillInTheBlankExamples": [
+      "Our school garden has _____ flowers in spring. (我們學校的花園在春天有丰富的的花朵。)",
+      "The forest is home to _____ wildlife. (這片森林是大量的野生動物的家園。)",
+      "Rainfall has been _____ this year, leading to good harvests. (今年的降雨量很充足，帶來了豐收。)"
+    ],
+    "relatedWords": ["abundance", "abundantly"],
+    "synsets": [],
+    "synonyms": ["plentiful", "copious", "ample", "bountiful"],
+    "antonyms": ["scarce", "meager", "deficient"],
+    "rootWord": "abund",
+    "similarWords": ["abandon", "bound", "redundant"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.5,
+    "interval": 1,
+    "repetitions": 0,
+    "nextReviewDate": 1721462400000,
+    "pronunciation": "/əˈbʌndənt/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0
+  },
+  {
+    "word": "fascinating",
+    "definition": "迷人的；吸引人的",
+    "example": [
+      "It was a fascinating story. (這是一個引人入勝的故事。)",
+      "The history of ancient Egypt is truly fascinating. (古埃及的歷史確實很迷人。)"
+    ],
+    "fillInTheBlankExamples": [
+      "The documentary about deep-sea creatures was truly _____. (關於深海生物的紀錄片真是太迷人了。)",
+      "She found his research on quantum physics incredibly _____. (她發現他關於量子物理學的研究極其吸引人的。)",
+      "Learning about different cultures can be a very _____ experience. (了解不同的文化可能是一種非常吸引人的體驗。)"
+    ],
+    "relatedWords": ["fascinate", "fascination"],
+    "synsets": [],
+    "synonyms": ["captivating", "engaging", "intriguing"],
+    "antonyms": ["boring", "dull", "uninteresting"],
+    "rootWord": "fascin",
+    "similarWords": ["fascination", "fasten", "fencing"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.6,
+    "interval": 3,
+    "repetitions": 1,
+    "nextReviewDate": 1721635200000,
+    "pronunciation": "/ˈfæsɪneɪtɪŋ/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0
+  },
+  {
+    "word": "fragile",
+    "definition": "易碎的；脆弱的",
+    "example": [
+      "Be careful, the vase is fragile. (小心，花瓶很易碎。)",
+      "The country's economy is in a fragile state. (該國經濟處於脆弱狀態。)"
+    ],
+    "fillInTheBlankExamples": [
+      "Handle with care; the glassware is very _____. (請小心處理；玻璃器皿非常易碎。)",
+      "The peace agreement proved to be _____ and quickly broke down. (和平協議被證明是脆弱的，很快就破裂了。)",
+      "The bird's nest was so _____ that a strong wind could destroy it. (鳥巢如此脆弱，一陣強風就能把它毀了。)"
+    ],
+    "relatedWords": ["fragility"],
+    "synsets": [],
+    "synonyms": ["delicate", "brittle", "breakable"],
+    "antonyms": ["sturdy", "durable", "resilient"],
+    "rootWord": "frag",
+    "similarWords": ["fragment", "frail", "gr agile"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.4,
+    "interval": 7,
+    "repetitions": 2,
+    "nextReviewDate": 1721980800000,
+    "pronunciation": "/ˈfrædʒaɪl/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0
+  },
+  {
+    "word": "resilient",
+    "definition": "有彈性的；能迅速恢復的；韧性",
+    "example": [
+      "She's a resilient person who bounces back quickly. (她是一個很快就能恢復的堅韌的人。)",
+      "The material is highly resilient to wear and tear. (這種材料非常耐磨損。)"
+    ],
+    "fillInTheBlankExamples": [
+      "Despite many setbacks, the community proved to be incredibly _____. (儘管遇到許多挫折，社區仍表現出令人難以置信的韧性。)",
+      "Rubber is a very _____ material. (橡膠是一種非常有韧性的材料。)",
+      "Children are often more _____ than adults when facing challenges. (孩子們在面對挑戰時通常比成年人更坚韧。)"
+    ],
+    "relatedWords": ["resilience"],
+    "synsets": [],
+    "synonyms": ["flexible", "durable", "tough", "adaptive"],
+    "antonyms": ["fragile", "vulnerable", "inflexible"],
+    "rootWord": "sili",
+    "similarWords": ["reselect", "resistant", "reliant"],
+    "partOfSpeech": "adj.",
+    "easinessFactor": 2.7,
+    "interval": 10,
+    "repetitions": 3,
+    "nextReviewDate": 1722240000000,
+    "pronunciation": "/rɪˈzɪliənt/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0
+  }
+]

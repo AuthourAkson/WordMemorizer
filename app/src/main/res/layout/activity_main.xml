@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_word"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/buttonReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/review"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/buttonImport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/import_words" />
+
+</LinearLayout>

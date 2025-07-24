@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Word Memorizer</string>
+
+    <!-- Score labels -->
+    <string name="score_1">1</string>
+    <string name="score_2">2</string>
+    <string name="score_3">3</string>
+    <string name="score_4">4</string>
+    <string name="score_5">5</string>
+
+    <!-- Buttons -->
+    <string name="next_word">下一个</string>
+    <string name="add_word">添加单词</string>
+    <string name="review">开始复习</string>
+    <string name="generate_definition">生成翻译和例句</string>
+    <string name="import_words">导入单词</string>
+    <string name="import_success">导入成功！共添加了%d个单词</string>
+    <string name="import_failed">导入失败：%s</string>
+    <string name="select_json_file">选择JSON文件</string>
+</resources>

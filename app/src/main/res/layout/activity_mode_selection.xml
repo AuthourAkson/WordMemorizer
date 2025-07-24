@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <Button
+        android:id="@+id/buttonStandardReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="常规单词复习" />
+
+    <Button
+        android:id="@+id/buttonSemanticReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="情景语义关联复习" />
+
+    <Button
+        android:id="@+id/buttonDefinitionQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="释义辨析复习" /> 
+
+    <Button
+        android:id="@+id/buttonConsolidationMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="巩固应用" />
+        
+</LinearLayout>

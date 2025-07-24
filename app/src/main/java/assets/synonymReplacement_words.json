@@ -1,0 +1,143 @@
+[
+  {
+    "word": "abundant",
+    "definition": "存在的、供應量大的；豐富的、充裕的",
+    "example": [
+      "The desert has a lot of sand. (沙漠裡有很多沙子。)",
+      "An abundant supply of cheap labor. (廉價勞動力的充足供應。)"
+    ],
+    "fillInTheBlankExamples": [
+      "The country has an ____ supply of natural resources. (這個國家有大量的的自然資源供應。)"
+    ],
+    "relatedWords": ["plentiful", "ample"],
+    "synsets": ["S: (adj) abundant (present in great quantity)"],
+    "synonyms": ["plentiful", "ample", "copious"],
+    "antonyms": ["scarce", "meager"],
+    "rootWord": "abound",
+    "similarWords": ["redundant", "undulant"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.5,
+    "interval": 25,
+    "repetitions": 5,
+    "nextReviewDate": 1753305600000,
+    "pronunciation": "/əˈbʌndənt/",
+    "fillInBlankReviewCount": 2,
+    "lastFillInBlankReviewDate": 1720000000000,
+    "synonymReplacementExamples": [
+      {
+        "originalSentence": "The forest has a lot of animals.",
+        "originalTranslation": "森林裡有很多動物。",
+        "recommendedReplacementSentence": "The forest has abundant animals."
+      },
+      {
+        "originalSentence": "Rainfall was very plentiful this year.",
+        "originalTranslation": "今年的降雨非常充足。",
+        "recommendedReplacementSentence": "Rainfall was abundant this year."
+      }
+    ]
+  },
+  {
+    "word": "enormous",
+    "definition": "極大的、巨大的",
+    "example": [
+      "An enormous amount of money. (巨額的錢。)",
+      "An enormous challenge. (一個巨大的挑戰。)"
+    ],
+    "fillInTheBlankExamples": [
+      "The elephant was ____, much bigger than expected. (這頭大象很巨大，比預期的大得多。)"
+    ],
+    "relatedWords": ["huge", "immense"],
+    "synsets": ["S: (adj) enormous (extraordinarily large in size or extent or amount or power or degree)"],
+    "synonyms": ["huge", "immense", "gigantic"],
+    "antonyms": ["tiny", "miniature"],
+    "rootWord": "",
+    "similarWords": ["formidable", "enforce"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.6,
+    "interval": 20,
+    "repetitions": 4,
+    "nextReviewDate": 1753478400000,
+    "pronunciation": "/ɪˈnɔːrməs/",
+    "fillInBlankReviewCount": 1,
+    "lastFillInBlankReviewDate": 1721000000000,
+    "synonymReplacementExamples": [
+      {
+        "originalSentence": "The little boy saw a very big elephant.",
+        "originalTranslation": "小男孩看到了一頭很大的大象。",
+        "recommendedReplacementSentence": "The little boy saw an enormous elephant."
+      },
+      {
+        "originalSentence": "Building the bridge was a huge task.",
+        "originalTranslation": "建造這座橋樑是一項巨大的任務。",
+        "recommendedReplacementSentence": "Building the bridge was an enormous task."
+      }
+    ]
+  },
+  {
+    "word": "fragile",
+    "definition": "易碎的、脆弱的",
+    "example": [
+      "The vase is very fragile. (這個花瓶很脆弱。)",
+      "Fragile bones. (脆弱的骨頭。)"
+    ],
+    "fillInTheBlankExamples": [],
+    "relatedWords": ["brittle", "delicate"],
+    "synsets": ["S: (adj) fragile (easily broken or damaged or destroyed)"],
+    "synonyms": ["brittle", "delicate", "frail"],
+    "antonyms": ["strong", "durable"],
+    "rootWord": "fracture",
+    "similarWords": ["fragrant", "frangible"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.3,
+    "interval": 22,
+    "repetitions": 3,
+    "nextReviewDate": 1752000000000,
+    "pronunciation": "/ˈfrædʒaɪl/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0,
+    "synonymReplacementExamples": [
+      {
+        "originalSentence": "The glass was easily broken.",
+        "originalTranslation": "這個玻璃很容易碎。",
+        "recommendedReplacementSentence": "The glass was very fragile."
+      }
+    ]
+  },
+  {
+    "word": "diligent",
+    "definition": "勤奮的、努力的",
+    "example": [
+      "A diligent student. (一個勤奮的學生。)",
+      "Diligent efforts are required. (需要勤奮的努力。)"
+    ],
+    "fillInTheBlankExamples": [
+      "She is a very ____ worker. (她是一個非常勤奋的工人。)"
+    ],
+    "relatedWords": ["industrious", "hard-working"],
+    "synsets": ["S: (adj) diligent (characterized by care and perseverance in carrying out tasks)"],
+    "synonyms": ["industrious", "assiduous", "painstaking"],
+    "antonyms": ["lazy", "negligent"],
+    "rootWord": "diligence",
+    "similarWords": ["intelligent", "negligent"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.7,
+    "interval": 30,
+    "repetitions": 6,
+    "nextReviewDate": 1754000000000,
+    "pronunciation": "/ˈdɪlɪdʒənt/",
+    "fillInBlankReviewCount": 3,
+    "lastFillInBlankReviewDate": 1719000000000,
+    "synonymReplacementExamples": [
+      {
+        "originalSentence": "He always works hard on his assignments.",
+        "originalTranslation": "他總是努力完成作業。",
+        "recommendedReplacementSentence": "He is always diligent on his assignments."
+      },
+      {
+        "originalSentence": "She is a very industrious employee.",
+        "originalTranslation": "她是一個非常勤奮的員工。",
+        "recommendedReplacementSentence": "She is a very diligent employee."
+      }
+    ]
+  }
+]
