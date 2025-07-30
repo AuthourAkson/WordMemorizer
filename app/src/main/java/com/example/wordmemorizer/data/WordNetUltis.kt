@@ -1,6 +1,5 @@
 package com.example.wordmemorizer.data
 
-// WordNetUtils.kt
 object WordNetUtils {
     // 分析词根（简化版，实际应用中应使用WordNet或词根分析库）
     fun extractRootWord(word: String): String {
@@ -45,11 +44,15 @@ object WordNetUtils {
         }
 
         val sameRoot = allWords.filter {
-            it.word != word.word && word.rootWord != null && word.rootWord == it.rootWord
+            it.word.equals(word.word, ignoreCase = true).not() &&
+                    word.rootWord != null && it.rootWord != null &&
+                    word.rootWord.equals(it.rootWord, ignoreCase = true)
         }
 
         val samePOS = allWords.filter {
-            it.word != word.word && word.partOfSpeech != null && word.partOfSpeech == it.partOfSpeech
+            it.word.equals(word.word, ignoreCase = true).not() &&
+                    word.partOfSpeech != null && it.partOfSpeech != null &&
+                    word.partOfSpeech.equals(it.partOfSpeech, ignoreCase = true)
         }
 
         return mapOf(

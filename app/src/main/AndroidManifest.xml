@@ -21,6 +21,7 @@
         <activity android:name=".ui.SentenceCompletionActivity" />
         <activity android:name=".ui.ConsolidationModeSelectionActivity" />
         <activity android:name=".ui.SynonymReplacementActivity"/>
+        <activity android:name=".ui.ClozeTestActivity"/>
 
         <activity
             android:name=".MainActivity"

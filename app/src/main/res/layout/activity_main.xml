@@ -1,30 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.tools.com/tools"
+    android:id="@+id/main_layout"  android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="32dp"
-    android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@drawable/gradient_background"  tools:context=".MainActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"  android:textSize="36sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonAdd"
-        android:layout_width="match_parent"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/add_word"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        app:cornerRadius="28dp"  app:layout_constraintBottom_toTopOf="@+id/buttonReview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appTitle"
+        app:layout_constraintWidth_percent="0.8" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonReview"
-        android:layout_width="match_parent"
+        style="@style/Widget.Material3.Button.OutlinedButton"  android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/review"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        app:cornerRadius="28dp"
+        app:strokeColor="@android:color/white"
+        app:strokeWidth="2dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonJuniorSeniorReview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
+        app:layout_constraintWidth_percent="0.8" />
 
-    <Button
-        android:id="@+id/buttonImport"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonJuniorSeniorReview"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/import_words" />
+        android:text="初高中单词复习"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        app:cornerRadius="28dp"
+        app:backgroundTint="#80FFFFFF"  android:textColor="@color/purple_700"  app:layout_constraintBottom_toTopOf="@+id/buttonImport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonReview"
+        app:layout_constraintWidth_percent="0.8" />
 
-</LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonImport"
+        style="@style/Widget.Material3.Button.TextButton"  android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/import_words"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/buttonJuniorSeniorReview"
+        app:layout_constraintWidth_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

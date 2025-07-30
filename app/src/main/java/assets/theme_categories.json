@@ -10,5 +10,17 @@
   {
     "theme": "自然",
     "relatedWords": ["tree", "river", "mountain", "cloud"]
+  },
+  {
+    "theme": "动物",
+    "relatedWords": ["dog", "cat", "bird", "fish", "elephant", "lion"]
+  },
+  {
+    "theme": "交通",
+    "relatedWords": ["car", "bus", "train", "airplane", "station", "driver"]
+  },
+  {
+    "theme": "食物",
+    "relatedWords": ["apple", "banana", "bread", "milk", "cheese", "water"]
   }
 ]

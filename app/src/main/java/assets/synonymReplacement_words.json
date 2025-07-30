@@ -34,6 +34,20 @@
         "originalTranslation": "今年的降雨非常充足。",
         "recommendedReplacementSentence": "Rainfall was abundant this year."
       }
+    ],
+    "clozeTestExamples": [
+      {
+        "clozeSentence": "The island boasts an ______ supply of fresh water.",
+        "clozeSentenceTranslation": "这个岛屿拥有丰富的淡水供应。",
+        "blankAnswers": ["abundant"],
+        "options": ["scarce", "limited", "abundant", "minimal"]
+      },
+      {
+        "clozeSentence": "Due to the heavy rain, there was an ______ harvest this year.",
+        "clozeSentenceTranslation": "由于雨水充足，今年获得了大丰收。",
+        "blankAnswers": ["abundant"],
+        "options": ["poor", "small", "abundant", "deficient", "ample"]
+      }
     ]
   },
   {
@@ -54,7 +68,7 @@
     "similarWords": ["formidable", "enforce"],
     "partOfSpeech": "adj",
     "easinessFactor": 2.6,
-    "interval": 20,
+    "interval": 21,
     "repetitions": 4,
     "nextReviewDate": 1753478400000,
     "pronunciation": "/ɪˈnɔːrməs/",
@@ -70,6 +84,20 @@
         "originalSentence": "Building the bridge was a huge task.",
         "originalTranslation": "建造這座橋樑是一項巨大的任務。",
         "recommendedReplacementSentence": "Building the bridge was an enormous task."
+      }
+    ],
+    "clozeTestExamples": [
+      {
+        "clozeSentence": "The company made an ______ profit last quarter.",
+        "clozeSentenceTranslation": "公司上个季度获得了巨额利润。",
+        "blankAnswers": ["enormous"],
+        "options": ["small", "tiny", "enormous", "modest"]
+      },
+      {
+        "clozeSentence": "The new stadium is of ______ size, capable of holding thousands.",
+        "clozeSentenceTranslation": "新体育场规模巨大，能容纳数千人。",
+        "blankAnswers": ["enormous"],
+        "options": ["large", "huge", "enormous", "massive", "small"]
       }
     ]
   },
@@ -100,6 +128,20 @@
         "originalSentence": "The glass was easily broken.",
         "originalTranslation": "這個玻璃很容易碎。",
         "recommendedReplacementSentence": "The glass was very fragile."
+      }
+    ],
+    "clozeTestExamples": [
+      {
+        "clozeSentence": "Handle with care, as the contents are very ______.",
+        "clozeSentenceTranslation": "请小心处理，因为里面的物品非常易碎。",
+        "blankAnswers": ["fragile"],
+        "options": ["strong", "durable", "fragile", "tough"]
+      },
+      {
+        "clozeSentence": "The antique teacups are incredibly ______ and must be handled gently.",
+        "clozeSentenceTranslation": "这些古董茶杯非常脆弱，必须轻拿轻放。",
+        "blankAnswers": ["fragile"],
+        "options": ["robust", "sturdy", "fragile", "resilient", "delicate"]
       }
     ]
   },
@@ -137,6 +179,20 @@
         "originalSentence": "She is a very industrious employee.",
         "originalTranslation": "她是一個非常勤奮的員工。",
         "recommendedReplacementSentence": "She is a very diligent employee."
+      }
+    ],
+    "clozeTestExamples": [
+      {
+        "clozeSentence": "He is a ______ student, always submitting his homework on time.",
+        "clozeSentenceTranslation": "他是一个勤奋的学生，总是按时交作业。",
+        "blankAnswers": ["diligent"],
+        "options": ["lazy", "careless", "diligent", "idle"]
+      },
+      {
+        "clozeSentence": "Success often comes to those who are ______ and persistent.",
+        "clozeSentenceTranslation": "成功常常属于那些勤奋且坚持不懈的人。",
+        "blankAnswers": ["diligent"],
+        "options": ["negligent", "active", "diligent", "slack", "hard-working"]
       }
     ]
   }

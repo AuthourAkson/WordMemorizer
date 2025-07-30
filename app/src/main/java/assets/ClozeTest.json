@@ -1,0 +1,39 @@
+[
+  {
+  "word": "magnificent",
+  "definition": "extremely beautiful, elaborate, or impressive.",
+  "example": [
+    "The magnificent castle stood on the hill.",
+    "The view from the mountain top was truly magnificent."
+  ],
+  "fillInTheBlankExamples": [],
+  "relatedWords": [],
+  "synsets": [],
+  "synonyms": ["splendid", "glorious", "superb"],
+  "antonyms": ["insignificant", "ordinary"],
+  "rootWord": "magni",
+  "similarWords": [],
+  "partOfSpeech": "adjective",
+  "easinessFactor": 2.5,
+  "interval": 45,
+  "repetitions": 0,
+  "pronunciation": "mæɡˈnɪfɪsnt",
+  "fillInBlankReviewCount": 0,
+  "lastFillInBlankReviewDate": 0,
+  "synonymReplacementExamples": [],
+  "clozeTestExamples": [
+    {
+      "clozeSentence": "The ancient ruins were incredibly ______. Visitors marveled at their beauty.",
+      "clozeSentenceTranslation": "这些古老的遗迹真是令人惊叹。游客们对它们的美丽赞不绝口。",
+      "blankAnswers": ["magnificent"],
+      "options": ["tiny", "magnificent", "dull", "ugly", "small", "grand"]
+    },
+    {
+      "clozeSentence": "Her performance was so ______ that the audience gave her a standing ovation.",
+      "clozeSentenceTranslation": "她的表演如此精彩，以至于观众起立鼓掌。",
+      "blankAnswers": ["magnificent"],
+      "options": ["awful", "average", "magnificent", "boring", "terrible", "superb"]
+    }
+  ]
+}
+]

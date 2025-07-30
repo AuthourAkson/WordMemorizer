@@ -7,13 +7,42 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="orange_500">#FF9800</color>
+    <color name="red_500">#F44336</color>
+    <color name="green_500">#4CAF50</color>
+
+    <color name="selected_theme_background">#FFE0B2</color>
+
+    <color name="drag_entered_color">#FFBB86FC</color>
+
     <color name="themeBox1_background">#D1E8FF</color>
     <color name="themeBox2_background">#FFEFD1</color>
     <color name="themeBox3_background">#D1FFD1</color>
 
+
+   <color name="correct_answer_background">#E8F5E9</color>
+    <color name="wrong_answer_background">#FFEBEE</color>
+    <color name="correct_answer_stroke">#4CAF50</color>
+    <color name="wrong_answer_stroke">#F44336</color>
+    <color name="draggable_word_background_default">#E0E0E0</color>
+    <color name="drop_zone_background_default">#F0F0F0</color>
+    <color name="drop_zone_synonym_background">#D9F7FF</color>
+    <color name="drop_zone_antonym_background">#FFF3E0</color>
+    <color name="drop_zone_similar_background">#E0F2F7</color>
+    <color name="colorPrimary">#6200EE</color>
+
+    <color name="selected_theme_chip_text">@color/white</color>
+    <color name="default_theme_chip_background">@color/white</color>
+    <color name="default_theme_chip_text">@color/purple_700</color>
+    <color name="default_theme_chip_stroke">@color/purple_500</color>
+
     <color name="semanticSynonymDropZone">#CCEEFF</color>
     <color name="semanticAntonymDropZone">#FFD6D6</color>
     <color name="semanticSimilarDropZone">#FFF9C4</color>
+
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="light_gray">#D3D3D3</color>
 
     <color name="drag_target_hover_color">#CCCCCC</color>
 </resources>

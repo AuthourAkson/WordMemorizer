@@ -1,0 +1,143 @@
+[
+  {
+    "word": "calm",
+    "definition": "平静的，镇静的",
+    "example": [
+      "The sea was calm. (大海很平静。)",
+      "She remained calm during the crisis. (她在危机中保持镇静。)"
+    ],
+    "fillInTheBlankExamples": [],
+    "relatedWords": [],
+    "synsets": ["S: (adj) calm (not agitated; without losing self-possession)"],
+    "synonyms": ["peaceful", "tranquil", "serene"],
+    "antonyms": ["agitated", "stormy", "turbulent"],
+    "rootWord": "calm",
+    "similarWords": ["clam", "palm"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.5,
+    "interval": 2,
+    "repetitions": 1,
+    "pronunciation": "/kɑːm/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0,
+    "synonymReplacementExamples": [],
+    "clozeTestExamples": []
+  },
+  {
+    "word": "innovate",
+    "definition": "创新，革新",
+    "example": [
+      "Companies must innovate to survive. (公司必须创新才能生存。)",
+      "They are always looking for ways to innovate their products. (他们总是在寻找创新产品的方法。)"
+    ],
+    "fillInTheBlankExamples": [],
+    "relatedWords": ["creativity", "progress", "development"],
+    "synsets": ["S: (v) innovate (create new things and ideas)"],
+    "synonyms": ["invent", "create", "devise"],
+    "antonyms": ["imitate", "copy"],
+    "rootWord": "nova",
+    "similarWords": ["renovate", "novice"],
+    "partOfSpeech": "verb",
+    "easinessFactor": 2.6,
+    "interval": 7,
+    "repetitions": 2,
+    "pronunciation": "/ˈɪnəveɪt/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0,
+    "synonymReplacementExamples": [],
+    "clozeTestExamples": []
+  },
+  {
+    "word": "benevolent",
+    "definition": "仁慈的，慈善的",
+    "example": [
+      "A benevolent dictator. (一位仁慈的独裁者。)",
+      "Her benevolent smile made everyone feel at ease. (她仁慈的微笑让每个人都感到放松。)"
+    ],
+    "fillInTheBlankExamples": [],
+    "relatedWords": ["kindness", "generosity"],
+    "synsets": ["S: (adj) benevolent (showing or motivated by sympathy and understanding and generosity)"],
+    "synonyms": ["kind", "generous", "altruistic"],
+    "antonyms": ["malevolent", "unkind", "malicious"],
+    "rootWord": "bene",
+    "similarWords": ["beneficial", "benign"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.4,
+    "interval": 15,
+    "repetitions": 4,
+    "pronunciation": "/bəˈnevələnt/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0,
+    "synonymReplacementExamples": [],
+    "clozeTestExamples": []
+  },
+  {
+    "word": "resilience",
+    "definition": "恢复力，弹性",
+    "example": [
+      "The resilience of nature. (大自然的恢复力。)",
+      "He showed great resilience in overcoming his illness. (他在克服疾病方面表现出极大的韧性。)"
+    ],
+    "fillInTheBlankExamples": [
+      "The community showed incredible ______ after the disaster. (灾难后社区展现出令人难以置信的恢复力。)"
+    ],
+    "relatedWords": ["adaptability", "strength"],
+    "synsets": ["S: (n) resilience (the physical property of a material that can return to its original shape or position after being compressed or stretched or bent)"],
+    "synonyms": ["elasticity", "flexibility", "toughness"],
+    "antonyms": ["fragility", "weakness"],
+    "rootWord": "resile",
+    "similarWords": ["resistance", "resignation"],
+    "partOfSpeech": "noun",
+    "easinessFactor": 2.6,
+    "interval": 25,
+    "repetitions": 5,
+    "pronunciation": "/rɪˈzɪliəns/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0,
+    "synonymReplacementExamples": [
+      {
+        "originalSentence": "The material's ability to spring back into shape is impressive.",
+        "originalTranslation": "这种材料恢复原状的能力令人印象深刻。",
+        "recommendedReplacementSentence": "The material's resilience is impressive."
+      }
+    ],
+    "clozeTestExamples": []
+  },
+  {
+    "word": "ubiquitous",
+    "definition": "普遍存在的，无处不在的",
+    "example": [
+      "Mobile phones are now ubiquitous. (手机现在无处不在。)",
+      "The company's advertisements are ubiquitous. (这家公司的广告无处不在。)"
+    ],
+    "fillInTheBlankExamples": [],
+    "relatedWords": ["common", "widespread"],
+    "synsets": ["S: (adj) ubiquitous (being present everywhere at once)"],
+    "synonyms": ["omnipresent", "pervasive"],
+    "antonyms": ["rare", "scarce"],
+    "rootWord": "ubi",
+    "similarWords": ["utility", "unanimous"],
+    "partOfSpeech": "adj",
+    "easinessFactor": 2.8,
+    "interval": 45,
+    "repetitions": 7,
+    "pronunciation": "/juːˈbɪkwɪtəs/",
+    "fillInBlankReviewCount": 0,
+    "lastFillInBlankReviewDate": 0,
+    "synonymReplacementExamples": [],
+    "clozeTestExamples": [
+      {
+        "clozeSentence": "In today's digital age, smartphones have become truly ______.",
+        "clozeSentenceTranslation": "在当今的数字时代，智能手机变得无处不在。",
+        "blankAnswers": ["ubiquitous"],
+        "options": ["limited", "scarce", "ubiquitous", "rare"]
+      },
+      {
+        "clozeSentence": "Coffee shops are ______ in this city; you can find one on almost every corner.",
+        "clozeSentenceTranslation": "咖啡馆在这座城市无处不在；几乎每个角落都能找到一家。",
+        "blankAnswers": ["ubiquitous"],
+        "options": ["uncommon", "few", "ubiquitous", "isolated", "sparse"]
+      }
+    ]
+  }
+]

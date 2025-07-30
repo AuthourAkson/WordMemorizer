@@ -7,6 +7,13 @@ data class SynonymReplacementEntry(
     val recommendedReplacementSentence: String
 )
 
+data class ClozeTestEntry(
+    val clozeSentence: String, // 带有填空符（如"____"或"[]"）的句子
+    val clozeSentenceTranslation: String,
+    val blankAnswers: List<String>, // 填空的正确答案列表，按顺序
+    val options: List<String> // 供用户选择的选项列表，包含正确答案和干扰项
+)
+
 // Word.kt
 data class Word(
     val word: String = "",
@@ -28,7 +35,8 @@ data class Word(
     // 新增字段來追蹤填空題練習的狀態
     var fillInBlankReviewCount: Int = 0,
     var lastFillInBlankReviewDate: Long = 0L,
-    val synonymReplacementExamples: List<SynonymReplacementEntry> = emptyList()
+    val synonymReplacementExamples: List<SynonymReplacementEntry> = emptyList(),
+    val clozeTestExamples: List<ClozeTestEntry> = emptyList()
 ) {
     fun isSemanticallyRelated(other: Word): Boolean {
         return this.word == other.word ||

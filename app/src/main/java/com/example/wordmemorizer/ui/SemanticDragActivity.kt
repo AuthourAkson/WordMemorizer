@@ -1,224 +1,245 @@
 package com.example.wordmemorizer.ui
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.ClipData
+import android.content.ClipDescription
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.DragEvent
 import android.view.View
-import android.widget.*
+import android.view.ViewGroup
+import android.widget.RadioGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.wordmemorizer.R
 import com.example.wordmemorizer.data.Word
 import com.example.wordmemorizer.data.WordRepository
+import com.example.wordmemorizer.sm2.SM2
 import com.google.android.flexbox.FlexboxLayout
-import com.example.wordmemorizer.data.TodayReviewCache
-import java.util.*
-import kotlin.collections.HashMap
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.chip.Chip
+import com.google.android.material.radiobutton.MaterialRadioButton
+import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SemanticDragActivity : AppCompatActivity() {
 
-    private lateinit var bubbleContainer: FlexboxLayout
-    private lateinit var dropZoneSynonym: LinearLayout
-    private lateinit var dropZoneAntonym: LinearLayout
-    private lateinit var dropZoneSimilar: LinearLayout
-    private lateinit var targetWordText: TextView
-    private lateinit var nextButton: Button
+    private lateinit var wordTextView: TextView
+    private lateinit var definitionTextView: TextView
+    private lateinit var draggableWordsContainer: FlexboxLayout
+    private lateinit var synonymDropZone: FlexboxLayout
+    private lateinit var antonymDropZone: FlexboxLayout
+    private lateinit var similarDropZone: FlexboxLayout
+    private lateinit var submitButton: MaterialButton
+    private lateinit var resultTextView: TextView
 
-    private lateinit var currentWord: Word
-    private val expectedAnswers = HashMap<String, String>()
-    private val answeredCorrectly = mutableSetOf<String>()
+    private lateinit var ratingGroup: RadioGroup
+    private lateinit var buttonFinishReview: MaterialButton
 
-    // 🔧 新增：遍歷控制用變量
-    private lateinit var semanticWords: MutableList<Word>
-    private var currentIndex = 0
+    // Add colors for chip background/stroke when marking answers
+    private var correctChipBackgroundColor: Int = 0
+    private var wrongChipBackgroundColor: Int = 0
+    private var correctChipStrokeColor: Int = 0
+    private var wrongChipStrokeColor: Int = 0
+    private var dragEnteredColor: Int = 0
 
+
+    private var currentWord: Word? = null
+    private val TAG = "SemanticDragActivity"
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_semantic_drag)
 
-        bubbleContainer = findViewById(R.id.bubbleContainer)
-        dropZoneSynonym = findViewById(R.id.dropZoneSynonym)
-        dropZoneAntonym = findViewById(R.id.dropZoneAntonym)
-        dropZoneSimilar = findViewById(R.id.dropZoneSimilar)
-        targetWordText = findViewById(R.id.targetWordText)
+        // Initialize colors from resources
+        correctChipBackgroundColor = ContextCompat.getColor(this, R.color.green_500)
+        wrongChipBackgroundColor = ContextCompat.getColor(this, R.color.red_500)
+        correctChipStrokeColor = ContextCompat.getColor(this, R.color.green_500)
+        wrongChipStrokeColor = ContextCompat.getColor(this, R.color.red_500)
+        dragEnteredColor = ContextCompat.getColor(this, R.color.purple_200)
 
-        val rootLayout = findViewById<LinearLayout>(R.id.rootLayout)
-        nextButton = Button(this).apply {
-            text = "下一个单词"
-            visibility = View.GONE
-            setOnClickListener {
-                loadNextWord() // 🔧 改成 loadNextWord，不再 recreate()
-            }
-        }
+        wordTextView = findViewById(R.id.wordTextView)
+        definitionTextView = findViewById(R.id.definitionTextView)
+        draggableWordsContainer = findViewById(R.id.draggableWordsContainer)
+        synonymDropZone = findViewById(R.id.synonymDropZone)
+        antonymDropZone = findViewById(R.id.antonymDropZone)
+        similarDropZone = findViewById(R.id.similarDropZone)
+        submitButton = findViewById(R.id.submitButton)
+        resultTextView = findViewById(R.id.resultTextView)
 
-        rootLayout.addView(nextButton)
+        ratingGroup = findViewById(R.id.ratingGroup)
+        buttonFinishReview = findViewById(R.id.buttonFinishReview)
 
-        semanticWords = TodayReviewCache.getWords().toMutableList() // 🔧 用局部副本控制流程
+        // Ensure MaterialRadioButtons are used
+        findViewById<MaterialRadioButton>(R.id.score1)
+        findViewById<MaterialRadioButton>(R.id.score2)
+        findViewById<MaterialRadioButton>(R.id.score3)
+        findViewById<MaterialRadioButton>(R.id.score4)
+        findViewById<MaterialRadioButton>(R.id.score5)
 
-        if (semanticWords.isEmpty()) {
-            Toast.makeText(this, "今日暂无可复习的单词", Toast.LENGTH_SHORT).show()
+
+        resultTextView.visibility = View.GONE
+        ratingGroup.visibility = View.GONE
+        buttonFinishReview.visibility = View.GONE
+
+        val wordJson = intent.getStringExtra("currentWordJson")
+        currentWord = Gson().fromJson(wordJson, Word::class.java)
+
+        currentWord?.let { word ->
+            wordTextView.text = word.word
+            definitionTextView.text = word.definition
+            setupDragAndDrop(word)
+        } ?: run {
+            Toast.makeText(this, "無法加載單詞信息", Toast.LENGTH_SHORT).show()
+            setResult(Activity.RESULT_CANCELED)
             finish()
-        } else {
-            loadNextWord()
-        }
-    }
-
-    // 🔧 每次加载一个词
-    private fun loadNextWord() {
-        answeredCorrectly.clear()
-        expectedAnswers.clear()
-        bubbleContainer.removeAllViews()
-
-        // ***重要：清除拖拽區域的子視圖，以確保每次加載新詞時清空之前的內容***
-        dropZoneSynonym.removeAllViews()
-        dropZoneAntonym.removeAllViews()
-        dropZoneSimilar.removeAllViews()
-
-        nextButton.visibility = View.GONE
-
-        if (currentIndex >= semanticWords.size) {
-            Toast.makeText(this, "语义复习完成！", Toast.LENGTH_SHORT).show()
-            TodayReviewCache.clear()
-            finish()
-            return
         }
 
-        currentWord = semanticWords[currentIndex]
-        currentIndex++
-
-        targetWordText.text = "目标词：${currentWord.word}"
-
-        val options = mutableListOf<Pair<String, String>>()
-
-        currentWord.synonyms.forEach {
-            options.add(it to "synonym")
-            expectedAnswers[it] = "synonym"
+        submitButton.setOnClickListener {
+            checkDragAndDropResult()
         }
 
-        currentWord.antonyms.forEach {
-            options.add(it to "antonym")
-            expectedAnswers[it] = "antonym"
-        }
-
-        currentWord.similarWords.forEach {
-            options.add(it to "similar")
-            expectedAnswers[it] = "similar"
-        }
-
-        if (options.isEmpty()) {
-            Toast.makeText(this, "当前单词没有可拖拽词，已跳过", Toast.LENGTH_SHORT).show()
-            loadNextWord() // 跳过当前词
-            return
-        }
-
-        options.shuffle()
-        for ((word, category) in options) {
-            val btn = Button(this).apply {
-                text = word
-                tag = category
-                setBackgroundColor(Color.parseColor("#EEEEEE"))
-                setPadding(24, 16, 24, 16)
-                setOnLongClickListener {
-                    val data = ClipData.newPlainText("wordCategory", "$word|$category")
-                    val shadow = View.DragShadowBuilder(this)
-                    it.startDragAndDrop(data, shadow, it, 0)
-                    true
-                }
-            }
-            bubbleContainer.addView(btn)
-        }
-
-        // 設置拖拽區域的監聽器
-        setDropZone(dropZoneSynonym, "synonym")
-        setDropZone(dropZoneAntonym, "antonym")
-        setDropZone(dropZoneSimilar, "similar")
-
-        // *** 新增：動態添加標籤 TextView ***
-        addCategoryLabelToDropZone(dropZoneSynonym, "同义词")
-        addCategoryLabelToDropZone(dropZoneAntonym, "反义词")
-        addCategoryLabelToDropZone(dropZoneSimilar, "形近词")
-    }
-
-    // 新增一個輔助函數來添加標籤
-    private fun addCategoryLabelToDropZone(dropZone: LinearLayout, labelText: String) {
-        val labelTextView = TextView(this).apply {
-            text = labelText
-            textSize = 16f
-            typeface = android.graphics.Typeface.DEFAULT_BOLD // *** 這裡進行了修正 ***
-            setTextColor(Color.BLACK) // 確保文字顏色是黑色
-            // 可以根據需要添加 padding 或 margin
-            // layoutParams = LinearLayout.LayoutParams(
-            //     LinearLayout.LayoutParams.WRAP_CONTENT,
-            //     LinearLayout.LayoutParams.WRAP_CONTENT
-            // ).apply {
-            //     bottomMargin = 16 // 設置底部間距，讓拖入的詞語不會緊貼標籤
-            // }
-        }
-        dropZone.addView(labelTextView, 0) // 添加到最前面，確保總是在頂部
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun setDropZone(layout: LinearLayout, expectedCategory: String) {
-        // 保存原始背景色
-        val originalBackgroundColor = when (expectedCategory) {
-            "synonym" -> Color.parseColor("#CCEEFF")
-            "antonym" -> Color.parseColor("#FFD6D6")
-            "similar" -> Color.parseColor("#FFF9C4")
-            else -> Color.WHITE // 默認值
-        }
-
-        // 首次設置背景色
-        layout.setBackgroundColor(originalBackgroundColor) // 確保在設置監聽器時就應用原始顏色
-
-        layout.setOnDragListener { view, event ->
-            when (event.action) {
-                DragEvent.ACTION_DRAG_STARTED -> true
-
-                DragEvent.ACTION_DRAG_ENTERED -> {
-                    view.setBackgroundColor(Color.LTGRAY)
-                    true
+        buttonFinishReview.setOnClickListener {
+            val selectedId = ratingGroup.checkedRadioButtonId
+            if (selectedId != -1) {
+                val score = when (selectedId) {
+                    R.id.score1 -> 1
+                    R.id.score2 -> 2
+                    R.id.score3 -> 3
+                    R.id.score4 -> 4
+                    R.id.score5 -> 5
+                    else -> 3
                 }
 
-                DragEvent.ACTION_DRAG_EXITED -> {
-                    view.setBackgroundColor(originalBackgroundColor)
-                    true
-                }
-
-                DragEvent.ACTION_DROP -> {
-                    view.setBackgroundColor(originalBackgroundColor)
-                    val item = event.clipData.getItemAt(0).text.toString()
-                    val (word, draggedCategory) = item.split("|")
-
-                    if (expectedCategory == draggedCategory) {
-                        if (answeredCorrectly.contains(word)) {
-                            Toast.makeText(this, "$word 已拖拽完成", Toast.LENGTH_SHORT).show()
-                            return@setOnDragListener true
+                currentWord?.let { word ->
+                    val updated = SM2.updateWord(word, score)
+                    CoroutineScope(Dispatchers.IO).launch {
+                        WordRepository.updateWord(applicationContext, updated)
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(this@SemanticDragActivity, "${updated.word} 评分成功！", Toast.LENGTH_SHORT).show()
+                            val resultIntent = Intent()
+                            resultIntent.putExtra("updatedWordJson", Gson().toJson(updated))
+                            setResult(Activity.RESULT_OK, resultIntent)
+                            finish()
                         }
-
-                        val textView = TextView(this).apply {
-                            text = word
-                            textSize = 16f
-                            setPadding(12, 6, 12, 6)
-                            setTextColor(Color.BLACK) // 确保拖入的单词是黑色
-                        }
-                        layout.addView(textView) // 直接添加到 LinearLayout 的末尾
-
-                        answeredCorrectly.add(word)
-                        bubbleContainer.removeView(findButtonByText(word))
-
-                        checkIfAllCorrect()
-                    } else {
-                        val tip = getRootDifferenceTip(currentWord, word)
-                        Toast.makeText(this, "拖错了：$word 不属于该类别\n$tip", Toast.LENGTH_SHORT).show()
                     }
+                }
+            } else {
+                Toast.makeText(this, "请先选择评分", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
+    private fun setupDragAndDrop(word: Word) {
+        // Clear existing views in drop zones for fresh setup
+        synonymDropZone.removeAllViews()
+        antonymDropZone.removeAllViews()
+        similarDropZone.removeAllViews()
+
+        val allRelatedWords = mutableListOf<String>()
+        allRelatedWords.addAll(word.synonyms)
+        allRelatedWords.addAll(word.antonyms)
+        allRelatedWords.addAll(word.similarWords)
+        allRelatedWords.shuffle()
+
+        draggableWordsContainer.removeAllViews()
+        for (relatedWord in allRelatedWords) {
+            val draggableChip = Chip(this).apply {
+                // Ensure LayoutParams are compatible with FlexboxLayout
+                layoutParams = FlexboxLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(dpToPx(4), dpToPx(4), dpToPx(4), dpToPx(4))
+                }
+                text = relatedWord
+                // Initial Material Chip styling
+                chipBackgroundColor = ContextCompat.getColorStateList(context, android.R.color.white)
+                chipStrokeColor = ContextCompat.getColorStateList(context, R.color.purple_200)
+                chipStrokeWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1.5f, resources.displayMetrics)
+                setTextColor(ContextCompat.getColorStateList(context, R.color.black))
+                isCheckable = false
+                isCloseIconVisible = false
+                isClickable = true
+                isLongClickable = true
+
+                setOnLongClickListener { v ->
+                    val item = ClipData.Item(v.tag as? CharSequence)
+                    val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                    val dragData = ClipData(v.tag.toString(), mimeTypes, item)
+                    val shadowBuilder = View.DragShadowBuilder(v)
+                    v.startDragAndDrop(dragData, shadowBuilder, v, 0)
+                    v.visibility = View.INVISIBLE
                     true
                 }
+            }
+            draggableChip.tag = relatedWord
+            draggableWordsContainer.addView(draggableChip)
+        }
 
+        setupDropZone(synonymDropZone)
+        setupDropZone(antonymDropZone)
+        setupDropZone(similarDropZone)
+    }
+
+    private fun setupDropZone(dropZone: FlexboxLayout) {
+        val defaultDropZoneBackground = ContextCompat.getDrawable(this, R.drawable.drop_zone_background)
+        dropZone.background = defaultDropZoneBackground
+
+        dropZone.setOnDragListener { v, event ->
+            val draggableItem = event.localState as? Chip // This is the dragged chip
+            when (event.action) {
+                DragEvent.ACTION_DRAG_STARTED -> {
+                    event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                }
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    (v as? FlexboxLayout)?.background?.setColorFilter(dragEnteredColor, PorterDuff.Mode.SRC_IN)
+                    v.invalidate()
+                    true
+                }
+                DragEvent.ACTION_DRAG_EXITED -> {
+                    (v as? FlexboxLayout)?.background?.clearColorFilter()
+                    v.invalidate()
+                    true
+                }
+                DragEvent.ACTION_DROP -> {
+                    (v as? FlexboxLayout)?.background?.clearColorFilter()
+                    v.invalidate()
+
+                    if (draggableItem != null) {
+                        val owner = draggableItem.parent as ViewGroup
+                        owner.removeView(draggableItem)
+                        (v as FlexboxLayout).addView(draggableItem)
+                        draggableItem.visibility = View.VISIBLE
+                        true
+                    } else {
+                        false
+                    }
+                }
                 DragEvent.ACTION_DRAG_ENDED -> {
-                    // 无论拖拽结果如何，拖拽结束后都恢复到原始背景色
-                    view.setBackgroundColor(originalBackgroundColor)
+                    (v as? FlexboxLayout)?.background?.clearColorFilter()
+                    v.invalidate()
+                    // If the drop was not successful and the item exists
+                    if (event.result == false && draggableItem != null) {
+                        // Re-add the chip to the draggableWordsContainer if it doesn't have a parent
+                        // This prevents crashes if the chip was removed from its original parent
+                        // but not added to a new one (e.g., dragged outside a drop zone)
+                        if (draggableItem.parent == null) {
+                            draggableWordsContainer.addView(draggableItem) // Corrected: use draggableItem
+                        }
+                        draggableItem.visibility = View.VISIBLE
+                    }
                     true
                 }
                 else -> false
@@ -226,28 +247,193 @@ class SemanticDragActivity : AppCompatActivity() {
         }
     }
 
-    private fun findButtonByText(text: String): View? {
-        for (i in 0 until bubbleContainer.childCount) {
-            val view = bubbleContainer.getChildAt(i)
-            if ((view as? Button)?.text == text) return view
+
+    @SuppressLint("DefaultLocale", "SetTextI18n")
+    private fun checkDragAndDropResult() {
+        currentWord?.let { word ->
+            var correctCount = 0
+            var totalCount = 0
+
+            val synonymCorrect = word.synonyms.toSet()
+            val antonymCorrect = word.antonyms.toSet()
+            val similarCorrect = word.similarWords.toSet()
+
+            val synonymDropped = getDroppedWordsFromChips(synonymDropZone)
+            val antonymDropped = getDroppedWordsFromChips(antonymDropZone)
+            val similarDropped = getDroppedWordsFromChips(similarDropZone)
+
+            // Evaluate synonyms
+            totalCount += synonymCorrect.size
+            for (w in synonymDropped) {
+                if (synonymCorrect.contains(w)) {
+                    correctCount++
+                    markChipInZone(synonymDropZone, w, true)
+                } else {
+                    markChipInZone(synonymDropZone, w, false)
+                }
+            }
+            // Mark correct synonyms that were NOT dropped in the synonym zone (i.e., still in draggable or wrong zone)
+            for (w in synonymCorrect) {
+                if (!synonymDropped.contains(w)) {
+                    markChipInAllContainers(w, false, synonymCorrect, antonymCorrect, similarCorrect)
+                }
+            }
+
+
+            // Evaluate antonyms
+            totalCount += antonymCorrect.size
+            for (w in antonymDropped) {
+                if (antonymCorrect.contains(w)) {
+                    correctCount++
+                    markChipInZone(antonymDropZone, w, true)
+                } else {
+                    markChipInZone(antonymDropZone, w, false)
+                }
+            }
+            // Mark correct antonyms that were NOT dropped in the antonym zone
+            for (w in antonymCorrect) {
+                if (!antonymDropped.contains(w)) {
+                    markChipInAllContainers(w, false, synonymCorrect, antonymCorrect, similarCorrect)
+                }
+            }
+
+
+            // Evaluate similar words
+            totalCount += similarCorrect.size
+            for (w in similarDropped) {
+                if (similarCorrect.contains(w)) {
+                    correctCount++
+                    markChipInZone(similarDropZone, w, true)
+                } else {
+                    markChipInZone(similarDropZone, w, false)
+                }
+            }
+            // Mark correct similar words that were NOT dropped in the similar zone
+            for (w in similarCorrect) {
+                if (!similarDropped.contains(w)) {
+                    markChipInAllContainers(w, false, synonymCorrect, antonymCorrect, similarCorrect)
+                }
+            }
+
+            // Mark any chips that are still in draggableWordsContainer and are incorrect
+            for (i in 0 until draggableWordsContainer.childCount) {
+                val child = draggableWordsContainer.getChildAt(i) as? Chip
+                if (child != null) {
+                    val wordText = child.text.toString()
+                    val isCorrectInAnyCategory =
+                        synonymCorrect.contains(wordText) || antonymCorrect.contains(wordText) || similarCorrect.contains(wordText)
+                    if (isCorrectInAnyCategory) {
+                        markChipInZone(draggableWordsContainer, wordText, false)
+                    }
+                }
+            }
+
+            val accuracy = if (totalCount > 0) (correctCount.toDouble() / totalCount) * 100 else 0.0
+            resultTextView.text = "正确率: ${String.format("%.2f", accuracy)}% ($correctCount/$totalCount)"
+            resultTextView.visibility = View.VISIBLE
+
+            ratingGroup.visibility = View.VISIBLE
+            buttonFinishReview.visibility = View.VISIBLE
+            submitButton.visibility = View.GONE
+
+            disableAllChips()
         }
-        return null
     }
 
-    private fun checkIfAllCorrect() {
-        if (answeredCorrectly.size == expectedAnswers.size) {
-            Toast.makeText(this, "恭喜，全部分类正确！", Toast.LENGTH_SHORT).show()
-            nextButton.visibility = View.VISIBLE
+    private fun getDroppedWordsFromChips(dropZone: FlexboxLayout): List<String> {
+        val words = mutableListOf<String>()
+        for (i in 0 until dropZone.childCount) {
+            val child = dropZone.getChildAt(i) as? Chip
+            child?.let {
+                words.add(it.text.toString())
+            }
+        }
+        return words
+    }
+
+    private fun markChipInZone(container: ViewGroup, word: String, isCorrect: Boolean) {
+        for (i in 0 until container.childCount) {
+            val child = container.getChildAt(i) as? Chip
+            if (child != null && child.text.toString() == word) {
+                child.chipBackgroundColor = ContextCompat.getColorStateList(this, if (isCorrect) R.color.green_500 else R.color.red_500)
+                child.chipStrokeColor = ContextCompat.getColorStateList(this, if (isCorrect) R.color.green_500 else R.color.red_500)
+                child.chipStrokeWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2f, resources.displayMetrics)
+                child.setTextColor(ContextCompat.getColorStateList(this, android.R.color.white))
+
+                break
+            }
         }
     }
 
-    private fun getRootDifferenceTip(word: Word, wrongWord: String): String {
-        val rootA = word.rootWord ?: ""
-        val rootB = WordRepository.getWords(this).find { it.word.equals(wrongWord, true) }?.rootWord ?: "未知"
+    private fun markChipInAllContainers(
+        word: String,
+        isCorrect: Boolean,
+        synonymCorrect: Set<String>,
+        antonymCorrect: Set<String>,
+        similarCorrect: Set<String>
+    ) {
+        // Check draggable container
+        for (i in 0 until draggableWordsContainer.childCount) {
+            val child = draggableWordsContainer.getChildAt(i) as? Chip
+            if (child != null && child.text.toString() == word) {
+                markChipInZone(draggableWordsContainer, word, false)
+                return
+            }
+        }
 
-        return if (rootA != rootB)
-            "词根不同：${word.word}（$rootA） vs $wrongWord（$rootB）"
-        else
-            "词义相关但分类错误"
+        // Check if a correct word was dropped in the WRONG zone
+        val allDropZones = listOf(synonymDropZone, antonymDropZone, similarDropZone)
+        for (dropZone in allDropZones) {
+            for (i in 0 until dropZone.childCount) {
+                val child = dropZone.getChildAt(i) as? Chip
+                if (child != null && child.text.toString() == word) {
+                    val isCorrectPlacement =
+                        (dropZone == synonymDropZone && synonymCorrect.contains(word)) ||
+                                (dropZone == antonymDropZone && antonymCorrect.contains(word)) ||
+                                (dropZone == similarDropZone && similarCorrect.contains(word))
+
+                    if (!isCorrectPlacement) {
+                        markChipInZone(dropZone, word, false)
+                    }
+                    return
+                }
+            }
+        }
+    }
+
+    private fun disableAllChips() {
+        for (i in 0 until draggableWordsContainer.childCount) {
+            val chip = draggableWordsContainer.getChildAt(i) as? Chip
+            chip?.isEnabled = false
+        }
+        for (i in 0 until synonymDropZone.childCount) {
+            val chip = synonymDropZone.getChildAt(i) as? Chip
+            chip?.isEnabled = false
+        }
+        for (i in 0 until antonymDropZone.childCount) {
+            val chip = antonymDropZone.getChildAt(i) as? Chip
+            chip?.isEnabled = false
+        }
+        for (i in 0 until similarDropZone.childCount) {
+            val chip = similarDropZone.getChildAt(i) as? Chip
+            chip?.isEnabled = false
+        }
+    }
+
+
+    private fun dpToPx(dp: Int): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp.toFloat(),
+            resources.displayMetrics
+        ).toInt()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val resultIntent = Intent()
+        resultIntent.putExtra("updatedWordJson", Gson().toJson(currentWord))
+        setResult(Activity.RESULT_CANCELED, resultIntent)
+        super.onBackPressed()
     }
 }
