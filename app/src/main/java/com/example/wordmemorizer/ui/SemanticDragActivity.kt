@@ -5,9 +5,7 @@ import android.app.Activity
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.PorterDuff
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.DragEvent
@@ -156,7 +154,7 @@ class SemanticDragActivity : AppCompatActivity() {
         draggableWordsContainer.removeAllViews()
         for (relatedWord in allRelatedWords) {
             val draggableChip = Chip(this).apply {
-                // Ensure LayoutParams are compatible with FlexboxLayout
+
                 layoutParams = FlexboxLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -164,7 +162,7 @@ class SemanticDragActivity : AppCompatActivity() {
                     setMargins(dpToPx(4), dpToPx(4), dpToPx(4), dpToPx(4))
                 }
                 text = relatedWord
-                // Initial Material Chip styling
+
                 chipBackgroundColor = ContextCompat.getColorStateList(context, android.R.color.white)
                 chipStrokeColor = ContextCompat.getColorStateList(context, R.color.purple_200)
                 chipStrokeWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1.5f, resources.displayMetrics)
@@ -298,7 +296,6 @@ class SemanticDragActivity : AppCompatActivity() {
             }
 
 
-            // Evaluate similar words
             totalCount += similarCorrect.size
             for (w in similarDropped) {
                 if (similarCorrect.contains(w)) {
@@ -308,14 +305,13 @@ class SemanticDragActivity : AppCompatActivity() {
                     markChipInZone(similarDropZone, w, false)
                 }
             }
-            // Mark correct similar words that were NOT dropped in the similar zone
             for (w in similarCorrect) {
                 if (!similarDropped.contains(w)) {
                     markChipInAllContainers(w, false, synonymCorrect, antonymCorrect, similarCorrect)
                 }
             }
 
-            // Mark any chips that are still in draggableWordsContainer and are incorrect
+
             for (i in 0 until draggableWordsContainer.childCount) {
                 val child = draggableWordsContainer.getChildAt(i) as? Chip
                 if (child != null) {

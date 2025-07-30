@@ -79,20 +79,6 @@ object WordRepository {
         currentFillInBlankSessionWords.clear()
         currentFillInBlankSessionWords.addAll(wordsForToday)
  }
-
-    fun getCurrentFillInBlankSessionWords(): List<Word> {
-        return currentFillInBlankSessionWords
-    }
-
-    suspend fun updateWordForFillInBlank(context: Context, word: Word) {
-        val updatedWord = word.copy(
-            fillInBlankReviewCount = word.fillInBlankReviewCount + 1,
-            lastFillInBlankReviewDate = System.currentTimeMillis()
-        )
-        saveWord(context, updatedWord)
-        wordCache[updatedWord.word.lowercase()] = updatedWord
-    }
-
     private fun clearTime(calendar: Calendar) {
         calendar.set(Calendar.HOUR_OF_DAY, 0)
         calendar.set(Calendar.MINUTE, 0)
@@ -135,10 +121,7 @@ object WordRepository {
             wordCache[updatedWord.word.lowercase()] = updatedWord
         }
     }
-
-    fun getWord(wordText: String): Word? {
-        return wordCache[wordText.lowercase()]
-    }
+    
 
     fun getAllWordsMap(): Map<String, Word> {
         return wordCache
